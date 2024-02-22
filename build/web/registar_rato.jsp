@@ -12,7 +12,7 @@
         <title>Regista Rato</title>
     </head>
     <body style ="background-color: ghostwhite">
-        <form action="RegistarRatoController.java"name="RegistaRato" method="POST">
+        <form action="RegistarRatoController"name="RegistaRato" method="POST">
             <table class ="center"; border="0" width="500" cellpading="1">
                 <thead>
                     <tr>
