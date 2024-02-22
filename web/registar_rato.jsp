@@ -12,7 +12,7 @@
         <title>Regista Rato</title>
     </head>
     <body style ="background-color: ghostwhite">
-        <form name="RegistaRato" method="POST">
+        <form action="RegistarRatoController.java"name="RegistaRato" method="POST">
             <table class ="center"; border="0" width="500" cellpading="1">
                 <thead>
                     <tr>
@@ -47,6 +47,12 @@
                         <td><input type="radio" name="vendas" value="sim" <label>Sim</label>
                         <input type="radio" name="vendas" value="Não" <label>Não</label>
                         </td>
+                    </tr>
+                     <tr>
+                         <td colspan="2" style="text-align: center">
+                         <input type="reset" value="Limpar"/>
+                         <input type="submit" value="Guardar"/>
+                         </td>
                     </tr>
                 </tbody>
             </table>
