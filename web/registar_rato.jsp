@@ -45,7 +45,7 @@
                      <tr>
                         <td><label>Vendido online</label></td>
                         <td><input type="radio" name="vendas" value="sim" <label>Sim</label>
-                        <input type="radio" name="vendas" value="Não" <label>Não</label>
+                        <input type="radio" name="vendas" value="Nao" <label>Não</label>
                         </td>
                     </tr>
                      <tr>

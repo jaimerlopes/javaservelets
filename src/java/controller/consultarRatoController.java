@@ -17,9 +17,8 @@ import model.Rato;
  *
  * @author Acer
  */
-public class RegistarRatoController extends HttpServlet {
-
-    ArrayList<Rato> listaRato=new ArrayList<>();
+public class consultarRatoController extends HttpServlet {
+  ArrayList<Rato> listaRato=new ArrayList<>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,10 +36,10 @@ public class RegistarRatoController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistarRatoController</title>");            
+            out.println("<title>Servlet consultarRatoController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistarRatoController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet consultarRatoController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,38 +71,26 @@ public class RegistarRatoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
+        //processRequest(request, response);
         
-        String sdescricao = request.getParameter("descricao");
-        String sfornecedor = request.getParameter("fornecedor");
-        Integer quantidade = Integer.parseInt(request.getParameter("qtd"));
-        Double preco = Double.parseDouble(request.getParameter("preco"));
-        String svendas = request.getParameter("vendas");
-        
-        boolean bvendas;
-        if (request.getParameter("vendas") != null && request.getParameter("vendas").equals("sim"))
-          bvendas = true;
-        else
-          bvendas = false;
-        
-         Rato rato=new Rato(sdescricao,quantidade,sfornecedor,preco,bvendas);
-        listaRato.add(rato);
-        rato.guardar();
-        for(Rato prod : listaRato){
-            System.out.println(prod);
-        }
-        
+         String sdescricao = request.getParameter("descricao");
+         // Rato rato=new Rato();
+          listaRato=Rato.consultar(sdescricao);
+          
           response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistarRatoController</title>");            
+            out.println("<title>Servlet consultarRatoController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistarRatoController at " + request.getContextPath() + "</h1>");
-            out.println(listaRato.get(0));
+            out.println("<h1>Servlet consultarRatoController at " + request.getContextPath() + "</h1>");
+            for( Rato x: listaRato){
+               out.println(x.toString());
+            }
+            
             out.println("</body>");
             out.println("</html>");
         }

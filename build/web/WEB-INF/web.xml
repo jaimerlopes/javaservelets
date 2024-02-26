@@ -8,6 +8,10 @@
         <servlet-name>RegistarRatoController</servlet-name>
         <servlet-class>controller.RegistarRatoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>consultarRatoController</servlet-name>
+        <servlet-class>controller.consultarRatoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>rato</servlet-name>
         <url-pattern>/rato</url-pattern>
@@ -15,5 +19,9 @@
     <servlet-mapping>
         <servlet-name>RegistarRatoController</servlet-name>
         <url-pattern>/RegistarRatoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>consultarRatoController</servlet-name>
+        <url-pattern>/consultarRatoController</url-pattern>
     </servlet-mapping>
 </web-app>
