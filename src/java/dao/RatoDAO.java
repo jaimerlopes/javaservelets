@@ -74,7 +74,7 @@ public class RatoDAO {
          }
     }
     
-    public ArrayList< Rato> BuscarRatosPorDescricao(String descricao)
+   static  public ArrayList< Rato> BuscarRatosPorDescricao(String descricao)
     {
             String sql = "SELECT * FROM  bdratos.tratos WHERE descricao LIKE '%" + descricao + "%'";
             
@@ -106,6 +106,7 @@ public class RatoDAO {
                         rato.setId(rs.getInt("id"));
                         rato.setDescricao(rs.getString("descricao"));
                         rato.setQuantidade(rs.getInt("quantidade"));
+                        rato.setFornecedor(rs.getString("Fornecedor"));
                         rato.setPreco(rs.getDouble("preco"));
                         rato.setOnline(rs.getBoolean("online"));
                         
@@ -142,5 +143,74 @@ public class RatoDAO {
             
             return ratos;
     }
+     
+static public ArrayList< Rato> BuscarAllRatos()
+    {
+            String sql = "SELECT * FROM  bdratos.tratos";
             
+            ResultSet rs = null;
+            
+            Connection cnc = null;
+            
+            PreparedStatement sta = null;
+            
+            Rato rato = null;
+        
+            ArrayList <Rato> ratos = null;
+            
+            try
+            {
+                cnc = new LigacaoMySQL().getConnection();
+                
+                sta = cnc.prepareStatement(sql);
+                
+                rs = sta.executeQuery();
+                
+                if (rs != null)
+                {
+                    ratos = new ArrayList<Rato>();
+                    
+                    while (rs.next())
+                    {
+                        rato = new Rato();
+                        rato.setId(rs.getInt("id"));
+                        rato.setDescricao(rs.getString("descricao"));
+                        rato.setQuantidade(rs.getInt("quantidade"));
+                        rato.setFornecedor(rs.getString("Fornecedor"));
+                        rato.setPreco(rs.getDouble("preco"));
+                        rato.setOnline(rs.getBoolean("online"));
+                        
+                        ratos.add(rato);
+                        
+                    }
+                }
+                    
+            }
+            catch (Exception e)
+            {
+                String erro = e.getMessage();
+                System.out.println("Erro: " + erro);
+            }
+            finally {
+            try{
+                if (sta != null)
+                    sta.close();
+            }
+            catch (Exception e2) {
+                  String erro2 = e2.getMessage();
+                  System.out.print("Erro: " + erro2);
+            }
+            
+            try {
+                if (cnc != null)
+                    cnc.close();
+            }
+            catch (Exception e3) {
+                String erro3 = e3.getMessage();
+                System.out.print("Erro: " + erro3);
+            }
+         }   
+            
+            return ratos;
+    }
 }

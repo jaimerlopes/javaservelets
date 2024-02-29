@@ -13,13 +13,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import model.Rato;
 
+
 /**
  *
  * @author Acer
  */
-public class RegistarRatoController extends HttpServlet {
+public class ConsultarALLRatos extends HttpServlet {
 
-    ArrayList<Rato> listaRato=new ArrayList<>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,19 +32,53 @@ public class RegistarRatoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+ 
+             ArrayList<Rato> listaRato=new ArrayList<>();
+             //listaRato=Rato.consultar(sdescricao);
+             listaRato=Rato.consultarAll();
+             
+             
+          response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistarRatoController</title>");            
+            out.println("<title>Servlet consultarRatoController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistarRatoController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet consultarRatoController at " + request.getContextPath() + "</h1>");
+            out.println("<table  border ='1'");
+      
+
+                for( Rato x: listaRato){
+                    out.println("<tr>");
+                    out.println("<th>");
+                    out.println(x.getId());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getDescricao());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getQuantidade());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getFornecedor());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getPreco());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getOnline());
+                    out.println("</th>");
+                    out.println("</tr>");
+                }
+       
             
             out.println("</body>");
             out.println("</html>");
-        }
+        }        
+             
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,45 +107,55 @@ public class RegistarRatoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
-        
-        String sdescricao = request.getParameter("descricao");
-        String sfornecedor = request.getParameter("fornecedor");
-        Integer quantidade = Integer.parseInt(request.getParameter("qtd"));
-        Double preco = Double.parseDouble(request.getParameter("preco"));
-        String svendas = request.getParameter("vendas");
-        
-        boolean bvendas;
-        if (request.getParameter("vendas") != null && request.getParameter("vendas").equals("sim"))
-          bvendas = true;
-        else
-          bvendas = false;
-        
-         Rato rato=new Rato(sdescricao,quantidade,sfornecedor,preco,bvendas);
-        listaRato.add(rato);
-        rato.guardar();
-        for(Rato prod : listaRato){
-            System.out.println(prod);
-        }
-        
+            
+             ArrayList<Rato> listaRato=new ArrayList<>();
+             //listaRato=Rato.consultar(sdescricao);
+             listaRato=Rato.consultarAll();
+             
+             
           response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistarRatoController</title>");            
+            out.println("<title>Servlet consultarRatoController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistarRatoController at " + request.getContextPath() + "</h1>");
-            out.println(listaRato.get(0));
+            out.println("<h1>Servlet consultarRatoController at " + request.getContextPath() + "</h1>");
+            out.println("<table  border ='1'");
+      
+
+                for( Rato x: listaRato){
+                    out.println("<tr>");
+                    out.println("<th>");
+                    out.println(x.getId());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getDescricao());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getQuantidade());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getFornecedor());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getPreco());
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println(x.getOnline());
+                    out.println("</th>");
+                    out.println("</tr>");
+                }
+       
+       out.println("<div class = center><a href =\"index.html\"><img src=\"imagens/carrinho.png\" width=\"35\" height=\"35\" alt=\"carrinho\"/> Registar rato </a>    <br>  <br>");
             out.println("</body>");
             out.println("</html>");
-            // Use JavaScript to redirect after a delay (for demonstration purposes)
-            out.println("<script type=\"text/javascript\">");
-            out.println("setTimeout(function() { window.location.href = 'index.html'; }, 1000);");  // Redirect after 3 seconds
-            out.println("</script>");
-        }
+        }        
+             
+             
+             
     }
 
     /**

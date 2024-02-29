@@ -109,10 +109,19 @@ public class Rato extends HttpServlet {
     
     public static ArrayList<Rato> consultar(String descricao)
     {
-        RatoDAO r = new RatoDAO();
-       return  r.BuscarRatosPorDescricao(descricao);
+        //RatoDAO r = new RatoDAO();
+       return  RatoDAO.BuscarRatosPorDescricao(descricao);
         
     }
+
+    public static ArrayList<Rato> consultarAll()
+    {
+        //RatoDAO r = new RatoDAO();
+        return  RatoDAO.BuscarAllRatos();
+        
+    }
+    
+
     
     @Override
     public String toString(){

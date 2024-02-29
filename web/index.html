@@ -47,6 +47,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <a href="consultar_ratos.jsp">
             <img src="imagens/carrinho.png" width="35" height="35" alt="carrinho" /> Consultar rato </a>
+        <br>
+        <br>
+
+
+            <a href="ConsultarALLRatos">
+            <img src="imagens/carrinho.png" width="35" height="35" alt="carrinho" /> Ver todos os produtos </a>
+        <br><!-- comment -->
+        <br><!-- comment -->
+         <!-- Adicione a biblioteca jQuery (JavaScript) -->
+
+    <!-- Adicione o JavaScript para enviar uma solicitação POST quando o link é clicado -->
+<script>
+    function chamarServlet() {
+        // Crie uma nova instância de XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // Configure a solicitação POST para "/seuservlet"
+        xhr.open("POST", "ConsultarALLRatos", true);
+
+        // Defina o cabeçalho da solicitação (opcional)
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Configurar a função de retorno de chamada quando a solicitação é concluída
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // A resposta está pronta e a solicitação foi bem-sucedida
+                console.log("Resposta do servidor:", xhr.responseText);
+                  document.write( xhr.responseText);
+            }
+        };
+
+        // Enviar a solicitação POST (pode incluir dados no corpo da solicitação)
+        xhr.send();
+    }
+</script>
+
+    <!-- Crie o link e chame a função JavaScript quando o link é clicado -->
+    <a href="javascript:void(0);" onclick="chamarServlet()">Clique aqui para chamar o Servlet com Método POST</a>
     </div>
 </body>
 </html>
