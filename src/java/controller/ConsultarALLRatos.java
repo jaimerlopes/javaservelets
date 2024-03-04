@@ -38,6 +38,7 @@ public class ConsultarALLRatos extends HttpServlet {
              listaRato=Rato.consultarAll();
              
              
+             
           response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -149,7 +150,7 @@ public class ConsultarALLRatos extends HttpServlet {
                     out.println("</tr>");
                 }
        
-       out.println("<div class = center><a href =\"index.html\"><img src=\"imagens/carrinho.png\" width=\"35\" height=\"35\" alt=\"carrinho\"/> Registar rato </a>    <br>  <br>");
+       out.println("<div class = center><a href =\"AfterLogin.jsp\"><img src=\"imagens/carrinho.png\" width=\"35\" height=\"35\" alt=\"carrinho\"/> Registar rato </a>    <br>  <br>");
             out.println("</body>");
             out.println("</html>");
         }        

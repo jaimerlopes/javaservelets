@@ -109,7 +109,7 @@ public class RegistarRatoController extends HttpServlet {
             out.println("</html>");
             // Use JavaScript to redirect after a delay (for demonstration purposes)
             out.println("<script type=\"text/javascript\">");
-            out.println("setTimeout(function() { window.location.href = 'index.html'; }, 1000);");  // Redirect after 3 seconds
+            out.println("setTimeout(function() { window.location.href = 'AfterLogin.jsp'; }, 1000);");  // Redirect after 3 seconds
             out.println("</script>");
         }
     }
